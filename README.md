@@ -1,0 +1,2 @@
+# nextjs-exercise
+NextJS
