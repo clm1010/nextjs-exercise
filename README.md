@@ -1,2 +1,3 @@
 # nextjs-exercise
+
 NextJS
