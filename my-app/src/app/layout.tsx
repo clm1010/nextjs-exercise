@@ -1,25 +1,24 @@
 import type { Metadata } from 'next'
 // google 字体
 import {
-  Inter,
-  Tajawal,
-  Dosis,
-  Noto_Sans,
-  Comforter,
-  Roboto,
-  EB_Garamond,
-  Poppins,
-  Lora,
-  Alegreya,
-  Libre_Baskerville,
-  Rufina,
-  Playfair_Display,
-  Lato
-
+  // Inter,
+  // Tajawal,
+  // Dosis,
+  // Noto_Sans,
+  // Comforter,
+  // Roboto,
+  EB_Garamond
+  // Poppins,
+  // Lora,
+  // Alegreya,
+  // Libre_Baskerville,
+  // Rufina,
+  // Playfair_Display,
+  // Lato
 } from 'next/font/google'
 import './globals.css'
 
-const interSans = EB_Garamond({
+const fontStyleSetting = EB_Garamond({
   // variable: '--font-inter-sans',
   subsets: ['latin'],
   display: 'swap',
@@ -38,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${interSans.className} antialiased`}>{children}</body>
+      <body className={`${fontStyleSetting.className} antialiased`}>{children}</body>
     </html>
   )
 }
