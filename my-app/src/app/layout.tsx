@@ -1,12 +1,29 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+// google 字体
+import {
+  Inter,
+  Tajawal,
+  Dosis,
+  Noto_Sans,
+  Comforter,
+  Roboto,
+  EB_Garamond,
+  Poppins,
+  Lora,
+  Alegreya,
+  Libre_Baskerville,
+  Rufina,
+  Playfair_Display,
+  Lato
+
+} from 'next/font/google'
 import './globals.css'
 
-import Header from '@/components/header'
-
-const interSans = Inter({
-  variable: '--font-inter-sans',
-  subsets: ['latin']
+const interSans = EB_Garamond({
+  // variable: '--font-inter-sans',
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '400'
 })
 
 export const metadata: Metadata = {
@@ -21,10 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${interSans.variable} antialiased`}>
-        <Header />
-        {children}
-      </body>
+      <body className={`${interSans.className} antialiased`}>{children}</body>
     </html>
   )
 }
