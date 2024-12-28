@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { AntdRegistry } from '@ant-design/nextjs-registry' // 解决 antd 闪烁问题
 // google 字体
 import {
   // Inter,
@@ -37,7 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${fontStyleSetting.className} antialiased`}>{children}</body>
+      <body className={`${fontStyleSetting.className} antialiased`}>
+        <AntdRegistry>{children}</AntdRegistry>
+      </body>
     </html>
   )
 }
