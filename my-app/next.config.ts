@@ -13,8 +13,7 @@ const nextConfig: NextConfig = {
         // search: ''
       }
     ]
-  },
-  output: 'export' // cloudflare 部署添加的选项
+  }
 }
 
 export default nextConfig
