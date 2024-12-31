@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { AntdRegistry } from '@ant-design/nextjs-registry' // 解决 antd 闪烁问题
+import '@ant-design/v5-patch-for-react-19' // 解决 antd 5 和 react 19 的兼容问题
+
 // google 字体
 import {
   // Inter,
