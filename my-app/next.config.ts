@@ -7,12 +7,18 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'i.ibb.co'
+        hostname: 'images.dog.ceo'
         // port: '',
         // pathname: '',
         // search: ''
       }
     ]
+  },
+  // fetch 的日志记录
+  logging: {
+    fetches: {
+      fullUrl: true
+    }
   }
 }
 
