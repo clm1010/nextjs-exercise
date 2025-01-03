@@ -39,7 +39,8 @@ export default async function Page() {
  * 2. next.js 15.0.0 版本开始支持 fetch 默认 'no-store' 不缓存，可以通过设置 cache: 'force-cache' 强制缓存
  *
  * 生产环境下 npm run build
- * fetch 都会缓存，即使默认设置了 cache: 'no-store' 也会缓存
+ * fetch 需要手动设置 cache: 'no-store'  不缓存
  * Ctrl + F5 强制刷新 也会缓存
+ *
  *
  */
