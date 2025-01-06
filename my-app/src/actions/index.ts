@@ -24,31 +24,12 @@ export async function getTodos() {
  * @param userId
  * @param formData
  */
-export async function addTodo(userId: string, formData: FormData) {
-  // 通过 Object.fromEntries 获取 formData 表单 全部数据
-  const rawFormData = Object.fromEntries(formData)
-  // $ACTION_ID_ 区分不同的表单
-  console.log(rawFormData)
-  console.log(userId, '🐮')
-  const todo = formData.get('todo') as string
-  // data.push(todo)
-  data.push({ id: data.length + 1, todo })
-  console.log(data)
-  // 您可以使用 revalidatePath 路径方式 重新验证
-  revalidatePath('/')
-  // 或者使用 revalidateTag  标签方式 重新验证
-  // revalidateTag('todos')
-}
-
-/**
- * @description 添加待办事项
- * @param formData
- */
-// export async function addTodo(formData: FormData) {
+// export async function addTodo(userId: string, formData: FormData) {
 //   // 通过 Object.fromEntries 获取 formData 表单 全部数据
 //   const rawFormData = Object.fromEntries(formData)
 //   // $ACTION_ID_ 区分不同的表单
 //   console.log(rawFormData)
+//   console.log(userId, '🐮')
 //   const todo = formData.get('todo') as string
 //   // data.push(todo)
 //   data.push({ id: data.length + 1, todo })
@@ -58,3 +39,22 @@ export async function addTodo(userId: string, formData: FormData) {
 //   // 或者使用 revalidateTag  标签方式 重新验证
 //   // revalidateTag('todos')
 // }
+
+/**
+ * @description 添加待办事项
+ * @param formData
+ */
+export async function addTodo(formData: FormData) {
+  // 通过 Object.fromEntries 获取 formData 表单 全部数据
+  const rawFormData = Object.fromEntries(formData)
+  // $ACTION_ID_ 区分不同的表单
+  console.log(rawFormData)
+  const todo = formData.get('todo') as string
+  // data.push(todo)
+  data.push({ id: data.length + 1, todo })
+  console.log(data)
+  // 您可以使用 revalidatePath 路径方式 重新验证
+  revalidatePath('/')
+  // 或者使用 revalidateTag  标签方式 重新验证
+  // revalidateTag('todos')
+}
