@@ -2,6 +2,7 @@
 
 // import { revalidatePath, revalidateTag } from 'next/cache'
 import { revalidatePath } from 'next/cache'
+import { sleep } from '@/utils'
 
 // const data = ['吃饭', '睡觉', '打豆豆']
 const data = [
@@ -44,7 +45,32 @@ export async function getTodos() {
  * @description 添加待办事项
  * @param formData
  */
-export async function addTodo(formData: FormData) {
+// export async function addTodo(formData: FormData) {
+//   await sleep(3000)
+//   // 通过 Object.fromEntries 获取 formData 表单 全部数据
+//   const rawFormData = Object.fromEntries(formData)
+//   // $ACTION_ID_ 区分不同的表单
+//   console.log(rawFormData)
+//   const todo = formData.get('todo') as string
+//   // data.push(todo)
+//   data.push({ id: data.length + 1, todo })
+//   console.log(data)
+//   // 您可以使用 revalidatePath 路径方式 重新验证
+//   revalidatePath('/')
+//   // 或者使用 revalidateTag  标签方式 重新验证
+//   // revalidateTag('todos')
+// }
+
+/**
+ * @description 添加待办事项
+ * @description 使用useFormState hook Server Action
+ * @param formData
+ */
+export async function addTodo(
+  prevState: { message: string },
+  formData: FormData
+) {
+  await sleep(3000)
   // 通过 Object.fromEntries 获取 formData 表单 全部数据
   const rawFormData = Object.fromEntries(formData)
   // $ACTION_ID_ 区分不同的表单
@@ -57,4 +83,9 @@ export async function addTodo(formData: FormData) {
   revalidatePath('/')
   // 或者使用 revalidateTag  标签方式 重新验证
   // revalidateTag('todos')
+
+  return {
+    ...prevState,
+    message: `添加 ${todo} 成功!`
+  }
 }
