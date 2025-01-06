@@ -3,6 +3,12 @@
 // import { revalidatePath, revalidateTag } from 'next/cache'
 import { revalidatePath } from 'next/cache'
 import { sleep } from '@/utils'
+import { z } from 'zod'
+
+const schema = z
+  .string()
+  .min(2, { message: '长度必须为 2 个或更多字符' })
+  .max(5, { message: '长度不得超过 5 个字符' })
 
 // const data = ['吃饭', '睡觉', '打豆豆']
 const data = [
@@ -76,6 +82,14 @@ export async function addTodo(
   // $ACTION_ID_ 区分不同的表单
   console.log(rawFormData)
   const todo = formData.get('todo') as string
+
+  // 校验表单数据
+  const validateFields = schema.safeParse(todo)
+  if (!validateFields.success) {
+    return {
+      message: validateFields.error.flatten().formErrors.toString()
+    }
+  }
   // data.push(todo)
   data.push({ id: data.length + 1, todo })
   console.log(data)

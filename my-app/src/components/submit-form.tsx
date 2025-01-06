@@ -27,12 +27,14 @@ export default function SubmitForm() {
             type='text'
             name='todo'
             placeholder='请输入待办事项'
+            required
           />
           <input
             className='border border-gray-300 rounded-md'
             type='Password'
             name='pwd'
             placeholder='Password'
+            required
           />
           <SubmitButton />
         </form>
