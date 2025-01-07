@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${fontStyleSetting.className} antialiased`}>
-        {children}
+      <div className='container mx-auto px-12'>{children}</div>
       </body>
     </html>
   )
