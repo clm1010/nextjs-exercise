@@ -14,7 +14,8 @@
     "next": "14.2.22",
     "prisma": "^6.2.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -1,28 +1,19 @@
-import { db } from '@/db'
+'use client'
 import React from 'react'
-import { redirect } from 'next/navigation'
+import { useFormState } from 'react-dom'
+import { createSnippet } from '@/actions'
+
+const initialState = {
+  message: ''
+}
 
 export default function Page() {
-  const createSnippet = async (formData: FormData) => {
-    'use server'
-    const title = formData.get('title') as string
-    const code = formData.get('code') as string
-    console.log('title', title)
-    console.log('code', code)
-
-    const snippet = await db.snippet.create({
-      data: {
-        title,
-        code
-      }
-    })
-    console.log(snippet, 'snippet')
-    // 服务端重定向，跳转到首页
-    redirect('/')
-  }
+  // useFormState(参数1：Server Action, 参数2：初始值)
+  const [state, createSnippetAction] = useFormState(createSnippet, initialState)
+  // console.log(state, 'state')
 
   return (
-    <form action={createSnippet}>
+    <form action={createSnippetAction}>
       <h1 className='font-bold text-lg m-4'>Create a new snippet</h1>
       <div className='flex flex-col gap-4'>
         {/* title */}
@@ -35,6 +26,7 @@ export default function Page() {
             type='text'
             name='title'
             id='title'
+            // required
           />
         </div>
         {/* code */}
@@ -47,8 +39,15 @@ export default function Page() {
             type='text'
             name='code'
             id='code'
+            // required
           />
         </div>
+        {state.message && (
+          <p className='my-2 p-2 bg-red-200 border rounded border-red-400 '>
+            {state.message}
+          </p>
+        )}
+
         <button
           className='rounded p-2 bg-blue-200 hover:bg-blue-400 hover:text-white'
           type='submit'
